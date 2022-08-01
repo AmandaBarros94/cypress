@@ -11,7 +11,7 @@ const USER = {
     }
 }
 
-describe('procurar endpoint', () => {
+describe('search endpoint', () => {
     it('url', () => {
         cy.visit(URL)
     })
@@ -19,7 +19,7 @@ describe('procurar endpoint', () => {
 })
 
 
-describe('Cadastro de usuario', () => {
+describe('User registration', () => {
 
 
     before(() => {
@@ -30,12 +30,12 @@ describe('Cadastro de usuario', () => {
         })
     })
 
-    it('informar email novo', () => {
+    it('inform new email', () => {
         cy.get('#email_create').type(`${USER.email}{enter}`)
 
     })
 
-    it('preenche campo obrigatorio', () => {
+    it('fill in mandatory field', () => {
         cy.url().should('include', URL_LOGIN)
         cy.get('#account-creation_form > :nth-child(1) > .clearfix > :nth-child(1)').should('be.visible')
         cy.get('#email').type('have.value', USER)
@@ -50,7 +50,7 @@ describe('Cadastro de usuario', () => {
         cy.get('#phone_mobile').type(faker.phone.number())
 
     })
-    it('finalizar cadastro', () => {
+    it('finalize registration', () => {
         cy.get('#submitAccount > span').click()
         cy.get('.account > span').should(USER.userName.first)
         cy.get('.account > span').should(USER.userName.last)
